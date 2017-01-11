@@ -1,7 +1,10 @@
 ﻿using TravelApi.Models;
 
-namespace TravelApi.Repository
+namespace TravelApi.Sqlite
 {
+   /// <summary>
+   /// TODO comment this
+   /// </summary>
    internal class ForeignKeyHelper
    {
       public void Resolve(Entity entity)

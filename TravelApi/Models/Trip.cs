@@ -1,4 +1,4 @@
-﻿using TravelApi.Repository;
+﻿using TravelApi.Sqlite;
 
 namespace TravelApi.Models
 {

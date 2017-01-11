@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace TravelApi.Repository
+namespace TravelApi.Sqlite
 {
+   /// <summary>
+   /// Generates Base62 identifiers.
+   /// </summary>
    public class IdGenerator
    {
       // Source: http://www.anotherchris.net/csharp/friendly-unique-id-generation-part-2/

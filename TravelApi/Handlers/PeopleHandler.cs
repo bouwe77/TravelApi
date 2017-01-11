@@ -6,7 +6,7 @@ using Dolores.Http;
 using Dolores.Requests;
 using Dolores.Responses;
 using TravelApi.Models;
-using TravelApi.Repository;
+using TravelApi.Sqlite;
 
 namespace TravelApi.Handlers
 {

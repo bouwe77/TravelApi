@@ -44,7 +44,7 @@ using Sqlite3DatabaseHandle = System.IntPtr;
 using Sqlite3Statement = System.IntPtr;
 #endif
 
-namespace TravelApi.Repository
+namespace TravelApi.Sqlite
 {
 	public class SQLiteException : Exception
 	{

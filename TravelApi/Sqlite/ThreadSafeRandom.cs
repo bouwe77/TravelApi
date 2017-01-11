@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace TravelApi.Repository
+namespace TravelApi.Sqlite
 {
    internal static class ThreadSafeRandom
    {

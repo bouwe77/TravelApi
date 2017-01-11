@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using TravelApi.Models;
 
-namespace TravelApi.Repository
+namespace TravelApi.Sqlite
 {
    public class SqliteRepository<TEntity> : IDisposable where TEntity : Entity, new()
    {
