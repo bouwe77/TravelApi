@@ -21,5 +21,7 @@ namespace TravelApi.Models
       public Location ToLocation { get; set; }
 
       public string CreatedAt { get; set; }
+      
+      public Transportation Transportation { get; set; }
    }
 }
