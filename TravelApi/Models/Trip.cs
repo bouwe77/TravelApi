@@ -22,6 +22,6 @@ namespace TravelApi.Models
 
       public string CreatedAt { get; set; }
       
-      public Transportation Transportation { get; set; }
+      public string Transportation { get; set; }
    }
 }
