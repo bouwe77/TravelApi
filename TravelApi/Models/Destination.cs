@@ -9,11 +9,7 @@ namespace TravelApi.Models
 
       [Ignore]
       public Location Location { get; set; }
-
-      //TODO enum as string
-      public string TransportationId { get; set; }
-
-      [Ignore]
-      public Transportation Transportation { get; set; }
+      
+      public string Transportation { get; set; }
    }
 }
