@@ -10,16 +10,9 @@ namespace TravelApi.Models
       [Ignore]
       public Person Person { get; set; }
 
-      public string FromLocationId { get; set; }
-
+      public string RouteId { get; set; }
+      
       [Ignore]
-      public Location FromLocation { get; set; }
-
-      public string ToLocationId { get; set; }
-
-      [Ignore]
-      public Location ToLocation { get; set; }
-
-      public string CreatedAt { get; set; }
+      public Route Route { get; set }
    }
 }

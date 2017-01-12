@@ -25,35 +25,45 @@ namespace TravelApi.Sqlite
          _foreignKeyHelper = new ForeignKeyHelper();
       }
 
-      public IEnumerable<TEntity> GetAll()
+      public IEnumerable<TEntity> GetAll(bool resolveForeignKeys = true)
       {
          var entities = _sqliteConnection.Table<TEntity>().ToList();
 
-         foreach (var entity in entities)
+         if (resolveForeignKeys)
          {
-            _foreignKeyHelper.Resolve(entity);
+            foreach (var entity in entities)
+            {
+               _foreignKeyHelper.Resolve(entity);
+            }
          }
-
+         
          return entities;
       }
 
-      public TEntity GetById(string id)
+      public TEntity GetById(string id, bool resolveForeignKeys = true)
       {
          var entity = _sqliteConnection.Get<TEntity>(id);
-         _foreignKeyHelper.Resolve(entity);
-
-         return entity;
-      }
-
-      public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
-      {
-         var entities = _sqliteConnection.Table<TEntity>().AsQueryable().Where(predicate.Compile()).ToList();
-
-         foreach (var entity in entities)
+         
+         if (resolveForeignKeys)
          {
             _foreignKeyHelper.Resolve(entity);
          }
+         
+         return entity;
+      }
 
+      public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate, bool resolveForeignKeys = true)
+      {
+         var entities = _sqliteConnection.Table<TEntity>().AsQueryable().Where(predicate.Compile()).ToList();
+
+         if (resolveForeignKeys)
+         {
+            foreach (var entity in entities)
+            {
+               _foreignKeyHelper.Resolve(entity);
+            }
+         }
+         
          return entities;
       }
 

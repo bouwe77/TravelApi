@@ -6,7 +6,7 @@ namespace TravelApi.Models
    public class Location : Entity
    {
       public string Name { get; set; }
-
-      //TODO SQLite public IEnumerable<Destination> Destinations { get; set; }
+      
+      public string WikipediaUrl { get; set; }
    }
 }

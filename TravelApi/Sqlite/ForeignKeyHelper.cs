@@ -54,7 +54,7 @@ namespace TravelApi.Sqlite
       {
          using (var repository = new SqliteRepository<Location>())
          {
-            return repository.GetById(locationId);
+            return repository.GetById(locationId, false);
          }
       }
 
@@ -62,7 +62,7 @@ namespace TravelApi.Sqlite
       {
          using (var repository = new SqliteRepository<Person>())
          {
-            return repository.GetById(personId);
+            return repository.GetById(personId, false);
          }
       }
    }
