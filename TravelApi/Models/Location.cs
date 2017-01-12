@@ -6,5 +6,7 @@ namespace TravelApi.Models
    public class Location : Entity
    {
       public string Name { get; set; }
+      
+      public string WikipediaUrl { get; set; }
    }
 }
