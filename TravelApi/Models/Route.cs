@@ -2,8 +2,8 @@
 
 namespace TravelApi.Models
 {
-   [Table("Destinations")]
-   public class Destination : Entity
+   [Table("Routes")]
+   public class Route : Entity
    {
       public string FromLocationId { get; set; }
 
