@@ -8,5 +8,6 @@ namespace TravelApi.Models
       public string Name { get; set; }
 
       //TODO SQLite public IEnumerable<Destination> Destinations { get; set; }
+      //TODO SQLite public IEnumerable<Person> People { get; set; }
    }
 }
