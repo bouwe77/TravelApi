@@ -10,13 +10,6 @@ namespace TravelApi.Resources
    {
       public string Name { get; set; }
 
-      [JsonProperty("Location")]
-      public string LocationUri { get; set; }
-
-      public string GetLocationId()
-      {
-         //TODO Get the Location Id from the Location URI
-         throw new NotImplementedException();
-      }
+      public string LocationId { get; set; }
    }
 }

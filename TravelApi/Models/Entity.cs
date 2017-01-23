@@ -6,7 +6,7 @@ namespace TravelApi.Models
    {
       protected Entity()
       {
-         Id = IdGenerator.GetId();
+         Id = IdGenerator.GetId().ToLower();
       }
 
       [PrimaryKey]

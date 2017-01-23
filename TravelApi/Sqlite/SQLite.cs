@@ -761,13 +761,12 @@ namespace TravelApi.Sqlite
 		/// The primary key.
 		/// </param>
 		/// <returns>
-		/// The object with the given primary key. Throws a not found exception
-		/// if the object is not found.
+		/// The object with the given primary key. Returns null if the object is not found.
 		/// </returns>
 		public T Get<T> (object pk) where T : new()
 		{
 			var map = GetMapping (typeof(T));
-			return Query<T> (map.GetByPrimaryKeySql, pk).First ();
+			return Query<T> (map.GetByPrimaryKeySql, pk).FirstOrDefault();
 		}
 
         /// <summary>
@@ -867,7 +866,7 @@ namespace TravelApi.Sqlite
 					if (sqlExp != null) {
 						// It is recommended that applications respond to the errors listed below 
 						//    by explicitly issuing a ROLLBACK command.
-						// TODO: This rollback failsafe should be localized to all throw sites.
+						// TO DO: This rollback failsafe should be localized to all throw sites.
 						switch (sqlExp.Result) {
 						case SQLite3.Result.IOError:
 						case SQLite3.Result.Full:
@@ -912,7 +911,7 @@ namespace TravelApi.Sqlite
 				if (sqlExp != null) {
 					// It is recommended that applications respond to the errors listed below 
 					//    by explicitly issuing a ROLLBACK command.
-					// TODO: This rollback failsafe should be localized to all throw sites.
+					// TO DO: This rollback failsafe should be localized to all throw sites.
 					switch (sqlExp.Result) {
 					case SQLite3.Result.IOError:
 					case SQLite3.Result.Full:
@@ -993,7 +992,7 @@ namespace TravelApi.Sqlite
 			if (firstLen >= 2 && savepoint.Length > firstLen + 1) {
 				int depth;
 				if (Int32.TryParse (savepoint.Substring (firstLen + 1), out depth)) {
-					// TODO: Mild race here, but inescapable without locking almost everywhere.
+					// TO DO: Mild race here, but inescapable without locking almost everywhere.
 					if (0 <= depth && depth < _transactionDepth) {
 #if NETFX_CORE
                         Volatile.Write (ref _transactionDepth, depth);

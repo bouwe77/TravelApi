@@ -13,6 +13,6 @@ namespace TravelApi.Models
       public string RouteId { get; set; }
       
       [Ignore]
-      public Route Route { get; set }
+      public Route Route { get; set; }
    }
 }

@@ -6,6 +6,7 @@ using Dolores.Http;
 using Dolores.Requests;
 using Dolores.Responses;
 using TravelApi.Models;
+using TravelApi.Resources;
 using TravelApi.Sqlite;
 
 namespace TravelApi.Handlers
@@ -30,8 +31,6 @@ namespace TravelApi.Handlers
       // GET /people/{personId}
       public Response GetOne(string personId)
       {
-         //TODO case insensitivity testen van ID's
-
          Person person;
          using (var repository = new SqliteRepository<Person>())
          {
@@ -51,21 +50,31 @@ namespace TravelApi.Handlers
       // POST /people
       public Response Post()
       {
-         //var person = Request.MessageBody.DeserializeJson<PersonThingy>();
+         var personData = Request.MessageBody.DeserializeJson<AddPersonData>();
 
-         //// buts PersonThingy om naar person, dus bijvoorbeeld het locationId ook achterhalen
+         // Check location exists.
+         using (var locationRepository = new SqliteRepository<Location>())
+         {
+            var location = locationRepository.GetById(personData.LocationId);
+            if (location == null)
+            {
+               throw new HttpBadRequestException($"LocationId '{personData.LocationId}' does not exist");
+            }
+         }
 
-         //using (var repository = new SqliteRepository<Person>())
-         //{
-         //   repository.Insert(person);
-         //}
+         // Insert person.
+         string personId;
+         using (var repository = new SqliteRepository<Person>())
+         {
+            var person = new Person { Name = personData.Name, LocationId = personData.LocationId };
+            personId = person.Id;
+            repository.Insert(person);
+         }
 
-         //var response = new Response(HttpStatusCode.Created);
-         //response.SetLocationHeader("OnePerson", person.Id);
+         var response = new Response(HttpStatusCode.Created);
+         response.SetLocationHeaderByRouteIdentifier("OnePerson");
 
-         //return response;
-
-         return new Response(HttpStatusCode.NotImplemented);
+         return response;
       }
    }
 }

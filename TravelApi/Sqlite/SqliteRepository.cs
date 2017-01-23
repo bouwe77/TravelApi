@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using TravelApi.Models;
@@ -16,11 +17,16 @@ namespace TravelApi.Sqlite
       {
          const string connectionString = @"D:\Mijn Databases\Sqlite\TravelApi\database.db";
 
+         File.Delete(connectionString);
+
+         if (!File.Exists(connectionString))
+         {
+            var databaseCreator = new DatabaseCreator(connectionString);
+            databaseCreator.CreateDatabase();
+         }
+
          // Connect to the database.
          _sqliteConnection = new SQLiteConnection(connectionString);
-
-         // Create the table if necessary.
-         _sqliteConnection.CreateTable<TEntity>();
 
          _foreignKeyHelper = new ForeignKeyHelper();
       }
@@ -42,9 +48,9 @@ namespace TravelApi.Sqlite
 
       public TEntity GetById(string id, bool resolveForeignKeys = true)
       {
-         var entity = _sqliteConnection.Get<TEntity>(id);
-         
-         if (resolveForeignKeys)
+         var entity = Find(x => x.Id.Equals(id, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+
+         if (entity != null && resolveForeignKeys)
          {
             _foreignKeyHelper.Resolve(entity);
          }
@@ -81,7 +87,7 @@ namespace TravelApi.Sqlite
 
       private string GetLastModified()
       {
-         return DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+         return DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
       }
 
       public void Delete(TEntity entity)

@@ -1,6 +1,4 @@
-﻿//TODO Reference naar HAL via reusables ipv FMG2
-//TODO SQLite repo uit de Monitoring tool halen?
-using System;
+﻿using System;
 using Dolores.Configuration;
 
 namespace TravelApi
@@ -10,10 +8,21 @@ namespace TravelApi
       protected void Application_Start(object sender, EventArgs e)
       {
          DoloresConfig.AddRoute(
+            routeIdentifier: "Root",
+            uriTemplate: "",
+            get: new GetMethodSettings { Type = "TravelApi.Handlers.RootHandler, TravelApi", MethodName = "Get" },
+            post: null,
+            put: null,
+            delete: null,
+            patch: null,
+            head: null,
+            options: null);
+
+         DoloresConfig.AddRoute(
             routeIdentifier: "AllPeople",
             uriTemplate: "/people",
             get: new GetMethodSettings { Type = "TravelApi.Handlers.PeopleHandler, TravelApi", MethodName = "GetAll" },
-            post: null,
+            post: new PostMethodSettings { Type = "TravelApi.Handlers.PeopleHandler, TravelApi", MethodName = "Post" },
             put: null,
             delete: null,
             patch: null,

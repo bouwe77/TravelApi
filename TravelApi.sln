@@ -5,6 +5,14 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelApi", "TravelApi\TravelApi.csproj", "{BC96B0AE-BEE1-4FD6-8D01-50693CB2E80B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSV", "CSV", "{4CF0766A-F4B8-4070-BBFE-39C2840DEF2B}"
+	ProjectSection(SolutionItems) = preProject
+		CSV\Locations.csv = CSV\Locations.csv
+		CSV\Routes.csv = CSV\Routes.csv
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{D4980AE8-37F5-4F50-A6B4-2073D5CA562A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,10 @@ Global
 		{BC96B0AE-BEE1-4FD6-8D01-50693CB2E80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC96B0AE-BEE1-4FD6-8D01-50693CB2E80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC96B0AE-BEE1-4FD6-8D01-50693CB2E80B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4980AE8-37F5-4F50-A6B4-2073D5CA562A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4980AE8-37F5-4F50-A6B4-2073D5CA562A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4980AE8-37F5-4F50-A6B4-2073D5CA562A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4980AE8-37F5-4F50-A6B4-2073D5CA562A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

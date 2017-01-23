@@ -12,7 +12,7 @@ namespace TravelApi.Resources
 
       public string Name { get; set; }
 
-      //TODO Destinations
+      //TODO Routes
 
       //public override object Embedded => new { Destinations };
    }

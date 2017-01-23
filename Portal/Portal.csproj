@@ -9,22 +9,21 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BC96B0AE-BEE1-4FD6-8D01-50693CB2E80B}</ProjectGuid>
+    <ProjectGuid>{D4980AE8-37F5-4F50-A6B4-2073D5CA562A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TravelApi</RootNamespace>
-    <AssemblyName>TravelApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Portal</RootNamespace>
+    <AssemblyName>Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <IISExpressSSLPort>44381</IISExpressSSLPort>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,13 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bouwe.Hal">
-      <HintPath>..\..\..\-- Mijn ReUsables\Bouwe.Hal\Hal\bin\Debug\Bouwe.Hal.dll</HintPath>
-    </Reference>
-    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Dolores">
       <HintPath>..\..\..\-- Mijn ReUsables\dolores\src\Dolores\bin\Debug\Dolores.dll</HintPath>
     </Reference>
@@ -59,25 +51,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -90,38 +79,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="sqlite3.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Views\index.view" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handlers\PeopleHandler.cs" />
-    <Compile Include="Handlers\RootHandler.cs" />
-    <Compile Include="Links\LocationLinks.cs" />
-    <Compile Include="Links\PersonLinks.cs" />
-    <Compile Include="Links\UriFactory.cs" />
-    <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Entity.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Route.cs" />
-    <Compile Include="Models\Transportation.cs" />
-    <Compile Include="Models\Trip.cs" />
+    <Compile Include="Handlers\Handler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sqlite\DatabaseCreator.cs" />
-    <Compile Include="Sqlite\ForeignKeyHelper.cs" />
-    <Compile Include="Sqlite\IdGenerator.cs" />
-    <Compile Include="Sqlite\SQLite.cs" />
-    <Compile Include="Sqlite\SQLiteAsync.cs" />
-    <Compile Include="Sqlite\SqliteRepository.cs" />
-    <Compile Include="Sqlite\ThreadSafeRandom.cs" />
-    <Compile Include="Resources\LocationResource.cs" />
-    <Compile Include="Forms\AddPersonData.cs" />
-    <Compile Include="Resources\PeopleResource.cs" />
-    <Compile Include="Resources\PersonResource.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -136,9 +102,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>32456</DevelopmentServerPort>
+          <DevelopmentServerPort>52518</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:32456/</IISUrl>
+          <IISUrl>http://localhost:52518/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

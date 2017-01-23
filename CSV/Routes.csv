@@ -1,0 +1,9 @@
+FromLocation               , ToLocation                  , Transportation
+Drachten                   , Leeuwarden                  , Bus
+Leeuwarden                 , Drachten                    , Bus
+Groningen                  , Groningen Airport Eelde     , Bus
+Groningen                  , Leeuwarden                  , Bus
+Groningen                  , Leeuwarden                  , Train
+Groningen                  , Amsterdam                   , Train
+Groningen                  , Amsterdam Schiphol Airport  , Train
+Amsterdam                  , Amsterdam Schiphol Airport  , Train

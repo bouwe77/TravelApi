@@ -13,13 +13,9 @@ namespace TravelApi.Sqlite
          {
             ResolvePerson((Person)entity);
          }
-         else if (entity is Location)
+         else if (entity is Route)
          {
-            ResolveLocation((Location)entity);
-         }
-         else if (entity is Destination)
-         {
-            ResolveDestination((Destination)entity);
+            ResolveRoute((Route)entity);
          }
          else if (entity is Trip)
          {
@@ -30,24 +26,18 @@ namespace TravelApi.Sqlite
       private void ResolveTrip(Trip trip)
       {
          trip.Person = GetPerson(trip.PersonId);
-         trip.FromLocation = GetLocation(trip.FromLocationId);
-         trip.ToLocation = GetLocation(trip.ToLocationId);
+         trip.Route = GetRoute(trip.RouteId);
       }
 
-      private void ResolveDestination(Destination destination)
+      private void ResolveRoute(Route route)
       {
-         destination.Location = GetLocation(destination.LocationId);
-         //TODO destination.Transportation
-      }
-
-      private void ResolveLocation(Location location)
-      {
-         //TODO location.Destinations
+         route.FromLocation = GetLocation(route.FromLocationId);
+         route.ToLocation = GetLocation(route.ToLocationId);
       }
 
       private void ResolvePerson(Person person)
       {
-         person.Location = GetLocation(person.LocationId);
+         //person.Location = GetLocation(person.LocationId);
       }
 
       private Location GetLocation(string locationId)
@@ -63,6 +53,14 @@ namespace TravelApi.Sqlite
          using (var repository = new SqliteRepository<Person>())
          {
             return repository.GetById(personId, false);
+         }
+      }
+
+      private Route GetRoute(string routeId)
+      {
+         using (var repository = new SqliteRepository<Route>())
+         {
+            return repository.GetById(routeId, false);
          }
       }
    }

@@ -301,7 +301,7 @@ namespace TravelApi.Sqlite
 	}
 
 	//
-	// TODO: Bind to AsyncConnection.GetConnection instead so that delayed
+	// TO DO: Bind to AsyncConnection.GetConnection instead so that delayed
 	// execution can still work after a Pool.Reset.
 	//
 	public class AsyncTableQuery<T>
