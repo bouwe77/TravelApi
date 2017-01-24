@@ -6,6 +6,7 @@ namespace TravelApi.Handlers
 {
    public class RootHandler : DoloresHandler
    {
+      // GET /
       public Response Get()
       {
          var response = new Response(HttpStatusCode.Found);

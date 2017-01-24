@@ -5,8 +5,8 @@ namespace TravelApi.Resources
 {
    public class LocationResource : HalResource
    {
-      public LocationResource(string teamId)
-         : base(new LocationLinks(teamId))
+      public LocationResource(string locationId)
+         : base(new LocationLinks(locationId))
       {
       }
 

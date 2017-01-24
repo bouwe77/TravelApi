@@ -37,7 +37,7 @@ namespace TravelApi.Sqlite
 
       private void ResolvePerson(Person person)
       {
-         //person.Location = GetLocation(person.LocationId);
+         person.Location = GetLocation(person.LocationId);
       }
 
       private Location GetLocation(string locationId)

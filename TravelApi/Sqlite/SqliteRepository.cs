@@ -17,8 +17,6 @@ namespace TravelApi.Sqlite
       {
          const string connectionString = @"D:\Mijn Databases\Sqlite\TravelApi\database.db";
 
-         File.Delete(connectionString);
-
          if (!File.Exists(connectionString))
          {
             var databaseCreator = new DatabaseCreator(connectionString);

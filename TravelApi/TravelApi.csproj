@@ -111,6 +111,8 @@
     <Compile Include="Models\Transportation.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\LocationResourceFactory.cs" />
+    <Compile Include="Resources\PersonResourceFactory.cs" />
     <Compile Include="Sqlite\DatabaseCreator.cs" />
     <Compile Include="Sqlite\ForeignKeyHelper.cs" />
     <Compile Include="Sqlite\IdGenerator.cs" />

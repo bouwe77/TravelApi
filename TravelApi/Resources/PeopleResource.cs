@@ -7,14 +7,14 @@ namespace TravelApi.Resources
 {
    public class PeopleResource : HalResource
    {
-      public PeopleResource(List<PersonResource> people)
+      public PeopleResource(IEnumerable<PersonResource> people)
          : base(new Links(UriFactory.GetPeopleUri()))
       {
          People = people;
       }
 
       [JsonIgnore]
-      public List<PersonResource> People { get; }
+      public IEnumerable<PersonResource> People { get; }
 
       public override object Embedded => new { People };
    }

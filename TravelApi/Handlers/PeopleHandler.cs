@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Dolores;
 using Dolores.Exceptions;
 using Dolores.Http;
@@ -22,8 +23,11 @@ namespace TravelApi.Handlers
             people = repository.GetAll();
          }
 
+         var personResources = people.Select(PersonResourceFactory.Create);
+         var peopleResource = new PeopleResource(personResources);
+
          var response = new Response(HttpStatusCode.Ok);
-         response.Json(people);
+         response.Json(peopleResource);
 
          return response;
       }
@@ -40,8 +44,9 @@ namespace TravelApi.Handlers
          var response = new Response(HttpStatusCode.NotFound);
          if (person != null)
          {
+            var personResource = PersonResourceFactory.Create(person);
             response = new Response(HttpStatusCode.Ok);
-            response.Json(person);
+            response.Json(personResource);
          }
 
          return response;
@@ -72,7 +77,7 @@ namespace TravelApi.Handlers
          }
 
          var response = new Response(HttpStatusCode.Created);
-         response.SetLocationHeaderByRouteIdentifier("OnePerson");
+         response.SetLocationHeaderByRouteIdentifier("OnePerson", personId);
 
          return response;
       }
