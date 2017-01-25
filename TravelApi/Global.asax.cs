@@ -40,6 +40,28 @@ namespace TravelApi
             head: null,
             options: null);
 
+         DoloresConfig.AddRoute(
+            routeIdentifier: "AllLocations",
+            uriTemplate: "/locations",
+            get: new GetMethodSettings { Type = "TravelApi.Handlers.LocationHandler, TravelApi", MethodName = "GetAll" },
+            post: null,
+            put: null,
+            delete: null,
+            patch: null,
+            head: null,
+            options: null);
+
+         DoloresConfig.AddRoute(
+            routeIdentifier: "OneLocation",
+            uriTemplate: "/locations/{id}",
+            get: new GetMethodSettings { Type = "TravelApi.Handlers.LocationHandler, TravelApi", MethodName = "GetOne" },
+            post: null,
+            put: null,
+            delete: null,
+            patch: null,
+            head: null,
+            options: null);
+
       }
    }
 }

@@ -5,5 +5,6 @@ Groningen                  , Groningen Airport Eelde     , Bus
 Groningen                  , Leeuwarden                  , Bus
 Groningen                  , Leeuwarden                  , Train
 Groningen                  , Amsterdam                   , Train
-Groningen                  , Amsterdam Schiphol Airport  , Train
-Amsterdam                  , Amsterdam Schiphol Airport  , Train
+Groningen                  , Amsterdam Schiphol          , Train
+Amsterdam                  , Amsterdam Schiphol          , Train
+Amsterdam                  , New York City               , Plane

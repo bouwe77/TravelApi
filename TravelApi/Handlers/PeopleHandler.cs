@@ -57,12 +57,16 @@ namespace TravelApi.Handlers
       {
          var personData = Request.MessageBody.DeserializeJson<AddPersonData>();
 
-//TODO Validatie: zowel Name als LocationId mogen niet null of leeg zijn.
+         bool valid = !string.IsNullOrWhiteSpace(personData.Name) && !string.IsNullOrWhiteSpace(personData.LocationId);
+         if (!valid)
+         {
+            throw new HttpBadRequestException("Both Name and Location are required");
+         }
 
          // Check location exists.
          using (var locationRepository = new SqliteRepository<Location>())
          {
-         //TODO LocationId kan/mag een URI zijn, dus plitten op / en laatste segment pakken als LocationId
+            //TODO LocationId kan/mag een URI zijn, dus plitten op / en laatste segment pakken als LocationId
             var location = locationRepository.GetById(personData.LocationId);
             if (location == null)
             {

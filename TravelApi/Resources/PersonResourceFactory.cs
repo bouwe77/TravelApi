@@ -19,7 +19,6 @@ namespace TravelApi.Resources
          };
 
          return personResource;
-
       }
    }
 }

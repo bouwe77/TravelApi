@@ -99,6 +99,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\LocationHandler.cs" />
     <Compile Include="Handlers\PeopleHandler.cs" />
     <Compile Include="Handlers\RootHandler.cs" />
     <Compile Include="Links\LocationLinks.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Models\Transportation.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\LocationCollectionResource.cs" />
     <Compile Include="Resources\LocationResourceFactory.cs" />
     <Compile Include="Resources\PersonResourceFactory.cs" />
     <Compile Include="Sqlite\DatabaseCreator.cs" />

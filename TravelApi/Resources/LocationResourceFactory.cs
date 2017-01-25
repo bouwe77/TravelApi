@@ -18,5 +18,10 @@ namespace TravelApi.Resources
 
          return locationResource;
       }
+
+      public static LocationResource Create(Location location)
+      {
+         return Create(location, false);
+      }
    }
 }

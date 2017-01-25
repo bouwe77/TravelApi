@@ -17,7 +17,7 @@ namespace TravelApi.Sqlite
 
       public SqliteRepository()
       {
-         const string connectionString = @"D:\Mijn Databases\Sqlite\TravelApi\database.db";
+         const string connectionString = @"D:\Mijn Databases\Sqlite\TravelApi\TravelApi.sqlite";
 
          if (!File.Exists(connectionString))
          {

@@ -20,9 +20,15 @@
          return uri;
       }
 
-      public static string GetLocationUri(string locationName)
+      public static string GetLocationUri(string locationId)
       {
-         string uri = GetUri("/locations/{0}", locationName);
+         string uri = GetUri("/locations/{0}", locationId);
+         return uri;
+      }
+
+      public static string GetLocationCollectionUri()
+      {
+         string uri = GetUri("/locations");
          return uri;
       }
 

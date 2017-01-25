@@ -35,6 +35,32 @@ namespace TravelApi.Sqlite
       private void InsertRoutes()
       {
          var routes = GetFromCsv<Route, RouteMap>("Routes.csv");
+         var returnRoutes = new List<Route>();
+
+         using (var locationRepository = new SqliteRepository<Location>())
+         {
+            foreach (var route in routes)
+            {
+               // The Locations CSV file contains location names, so resolve the IDs here.
+               var fromLocation = locationRepository.Find(l => l.Name == route.FromLocationId).First();
+               route.FromLocationId = fromLocation.Id;
+               var toLocation = locationRepository.Find(l => l.Name == route.ToLocationId).First();
+               route.ToLocationId = toLocation.Id;
+
+               // The CSV only contains unique routes one way, so duplicate them the other way.
+               var returnRoute = new Route
+               {
+                  FromLocationId = route.ToLocationId,
+                  ToLocationId = route.FromLocationId,
+                  Transportation = route.Transportation,
+                  LastModified = GetLastModified()
+               };
+               returnRoutes.Add(returnRoute);
+            }
+         }
+
+         routes.AddRange(returnRoutes);
+
          _sqliteConnection.InsertAll(routes);
       }
 
@@ -83,8 +109,8 @@ namespace TravelApi.Sqlite
    {
       public RouteMap()
       {
-         Map(m => m.FromLocation).Name("FromLocation");
-         Map(m => m.ToLocation).Name("ToLocation");
+         Map(m => m.FromLocationId).Name("FromLocation");
+         Map(m => m.ToLocationId).Name("ToLocation");
          Map(m => m.Transportation).Name("Transportation");
       }
    }
