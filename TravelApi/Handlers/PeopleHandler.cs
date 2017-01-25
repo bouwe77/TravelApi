@@ -52,9 +52,12 @@ namespace TravelApi.Handlers
       {
          var personData = Request.MessageBody.DeserializeJson<AddPersonData>();
 
+//TODO Validatie: zowel Name als LocationId mogen niet null of leeg zijn.
+
          // Check location exists.
          using (var locationRepository = new SqliteRepository<Location>())
          {
+         //TODO LocationId kan/mag een URI zijn, dus plitten op / en laatste segment pakken als LocationId
             var location = locationRepository.GetById(personData.LocationId);
             if (location == null)
             {
