@@ -6,6 +6,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using TravelApi.Models;
 
+//TODO Deze repository samen met de Sqlite.cs e.d. in een ReUsable zetten. Dan moet wel die ForeignKeyHelper eruit worden gesloopt of geinjecteerd worden.
+
 namespace TravelApi.Sqlite
 {
    public class SqliteRepository<TEntity> : IDisposable where TEntity : Entity, new()
