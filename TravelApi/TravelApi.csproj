@@ -44,7 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bouwe.Hal">
+    <Reference Include="Bouwe.Hal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\-- Mijn ReUsables\Bouwe.Hal\Hal\bin\Debug\Bouwe.Hal.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
@@ -64,6 +65,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -96,15 +98,17 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\RelationHandler.cs" />
+    <Compile Include="Hypermedia\HalFormProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\LocationHandler.cs" />
     <Compile Include="Handlers\PeopleHandler.cs" />
     <Compile Include="Handlers\RootHandler.cs" />
-    <Compile Include="Links\LocationLinks.cs" />
-    <Compile Include="Links\PersonLinks.cs" />
-    <Compile Include="Links\UriFactory.cs" />
+    <Compile Include="Hypermedia\PeopleLinks.cs" />
+    <Compile Include="Hypermedia\RelationNames.cs" />
+    <Compile Include="Hypermedia\UriFactory.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Person.cs" />
@@ -123,7 +127,7 @@
     <Compile Include="Sqlite\SqliteRepository.cs" />
     <Compile Include="Sqlite\ThreadSafeRandom.cs" />
     <Compile Include="Resources\LocationResource.cs" />
-    <Compile Include="Forms\AddPersonData.cs" />
+    <Compile Include="Hypermedia\CreatePersonData.cs" />
     <Compile Include="Resources\PeopleResource.cs" />
     <Compile Include="Resources\PersonResource.cs" />
   </ItemGroup>

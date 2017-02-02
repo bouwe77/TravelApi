@@ -13,6 +13,8 @@ namespace TravelApi.Resources
 
          if (fullRepresentation)
          {
+            locationResource.WikipediaUrl = location.WikipediaUrl;
+            
             //TODO destinations...
          }
 

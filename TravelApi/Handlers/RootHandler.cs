@@ -11,7 +11,6 @@ namespace TravelApi.Handlers
       {
          var response = new Response(HttpStatusCode.Found);
 
-         //TODO Deze moet uiteindelijk naar de resource die het startformulier heeft
          response.SetLocationHeaderByRouteIdentifier("AllPeople");
 
          return response;

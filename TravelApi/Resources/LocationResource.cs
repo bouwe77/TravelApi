@@ -1,4 +1,4 @@
-﻿using Hal;
+﻿using Bouwe.Hal;
 using TravelApi.Hypermedia;
 
 namespace TravelApi.Resources
@@ -6,11 +6,14 @@ namespace TravelApi.Resources
    public class LocationResource : HalResource
    {
       public LocationResource(string locationId)
-         : base(new LocationLinks(locationId))
+         : base(new Links(UriFactory.GetLocationUri(locationId)))
       {
       }
 
       public string Name { get; set; }
+
+      //TODO Eigenlijk moet de wikipedia URL een link zijn (dus LocationLinks class introduceren), maar het is even de vraag of de client daarmee om kan gaan qua GUI waar wat te tonen...
+      public string WikipediaUrl { get; set; }
 
       //TODO Routes
 

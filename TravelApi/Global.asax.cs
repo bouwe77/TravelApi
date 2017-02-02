@@ -62,6 +62,16 @@ namespace TravelApi
             head: null,
             options: null);
 
+         DoloresConfig.AddRoute(
+            routeIdentifier: "Relation",
+            uriTemplate: "/rels/{id}",
+            get: new GetMethodSettings { Type = "TravelApi.Handlers.RelationHandler, TravelApi", MethodName = "Get" },
+            post: null,
+            put: null,
+            delete: null,
+            patch: null,
+            head: null,
+            options: null);
       }
    }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Hal;
+using Bouwe.Hal;
 using Newtonsoft.Json;
 using TravelApi.Hypermedia;
 

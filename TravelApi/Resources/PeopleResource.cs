@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Hal;
+using Bouwe.Hal;
 using Newtonsoft.Json;
 using TravelApi.Hypermedia;
 
@@ -8,7 +8,7 @@ namespace TravelApi.Resources
    public class PeopleResource : HalResource
    {
       public PeopleResource(IEnumerable<PersonResource> people)
-         : base(new Links(UriFactory.GetPeopleUri()))
+         : base(new PeopleLinks())
       {
          People = people;
       }

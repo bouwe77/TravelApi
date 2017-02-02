@@ -1,4 +1,4 @@
-﻿using Hal;
+﻿using Bouwe.Hal;
 using Newtonsoft.Json;
 using TravelApi.Hypermedia;
 
@@ -7,7 +7,7 @@ namespace TravelApi.Resources
    public class PersonResource : HalResource
    {
       public PersonResource(string personId)
-         : base(new PersonLinks(personId))
+         : base(new Links(UriFactory.GetPersonUri(personId)))
       {
       }
 

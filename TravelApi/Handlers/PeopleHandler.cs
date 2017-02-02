@@ -6,6 +6,7 @@ using Dolores.Exceptions;
 using Dolores.Http;
 using Dolores.Requests;
 using Dolores.Responses;
+using TravelApi.Hypermedia;
 using TravelApi.Models;
 using TravelApi.Resources;
 using TravelApi.Sqlite;
@@ -55,7 +56,7 @@ namespace TravelApi.Handlers
       // POST /people
       public Response Post()
       {
-         var personData = Request.MessageBody.DeserializeJson<AddPersonData>();
+         var personData = Request.MessageBody.DeserializeJson<CreatePersonData>();
 
          bool valid = !string.IsNullOrWhiteSpace(personData.Name) && !string.IsNullOrWhiteSpace(personData.LocationId);
          if (!valid)
