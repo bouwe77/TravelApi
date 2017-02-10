@@ -11,7 +11,7 @@ namespace TravelApi.Handlers
       {
          var response = new Response(HttpStatusCode.Found);
 
-         response.SetLocationHeaderByRouteIdentifier("AllPeople");
+         response.SetLocationHeaderByRouteIdentifier("People");
 
          return response;
       }

@@ -85,7 +85,7 @@ namespace TravelApi.Handlers
          }
 
          var response = new Response(HttpStatusCode.Created);
-         response.SetLocationHeaderByRouteIdentifier("OnePerson", personId);
+         response.SetLocationHeaderByRouteIdentifier("Person", personId);
 
          return response;
       }

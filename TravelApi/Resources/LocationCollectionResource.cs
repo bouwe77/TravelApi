@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Bouwe.Hal;
+using Hal;
 using Newtonsoft.Json;
 using TravelApi.Hypermedia;
 
 namespace TravelApi.Resources
 {
-   public class LocationCollectionResource : HalResource
+   public class LocationCollectionResource : HalDocument
    {
       public LocationCollectionResource(IEnumerable<LocationResource> locations)
          : base(new Links(UriFactory.GetLocationCollectionUri()))

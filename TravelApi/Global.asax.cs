@@ -1,5 +1,6 @@
 ﻿using System;
 using Dolores.Configuration;
+using TravelApi.Handlers;
 
 namespace TravelApi
 {
@@ -7,71 +8,28 @@ namespace TravelApi
    {
       protected void Application_Start(object sender, EventArgs e)
       {
-         DoloresConfig.AddRoute(
-            routeIdentifier: "Root",
-            uriTemplate: "",
-            get: new GetMethodSettings { Type = "TravelApi.Handlers.RootHandler, TravelApi", MethodName = "Get" },
-            post: null,
-            put: null,
-            delete: null,
-            patch: null,
-            head: null,
-            options: null);
+         DoloresConfig.ShowErrorDetails = true;
 
-         DoloresConfig.AddRoute(
-            routeIdentifier: "AllPeople",
-            uriTemplate: "/people",
-            get: new GetMethodSettings { Type = "TravelApi.Handlers.PeopleHandler, TravelApi", MethodName = "GetAll" },
-            post: new PostMethodSettings { Type = "TravelApi.Handlers.PeopleHandler, TravelApi", MethodName = "Post" },
-            put: null,
-            delete: null,
-            patch: null,
-            head: null,
-            options: null);
+         DoloresConfig.JsonSerializerSettings = LowercaseContractResolver.GetSettings();
 
-         DoloresConfig.AddRoute(
-            routeIdentifier: "OnePerson",
-            uriTemplate: "/people/{id}",
-            get: new GetMethodSettings { Type = "TravelApi.Handlers.PeopleHandler, TravelApi", MethodName = "GetOne" },
-            post: null,
-            put: null,
-            delete: null,
-            patch: null,
-            head: null,
-            options: null);
+         DoloresConfig.Route(routeIdentifier: "Root", uriTemplate: "")
+            .Get(type: "TravelApi.Handlers.RootHandler, TravelApi", classMethod: "Get");
 
-         DoloresConfig.AddRoute(
-            routeIdentifier: "AllLocations",
-            uriTemplate: "/locations",
-            get: new GetMethodSettings { Type = "TravelApi.Handlers.LocationHandler, TravelApi", MethodName = "GetAll" },
-            post: null,
-            put: null,
-            delete: null,
-            patch: null,
-            head: null,
-            options: null);
+         DoloresConfig.Route(routeIdentifier: "People", uriTemplate: "/people")
+            .Get(type: "TravelApi.Handlers.PeopleHandler, TravelApi", classMethod: "GetAll")
+            .Post(type: "TravelApi.Handlers.PeopleHandler, TravelApi", classMethod: "Post");
 
-         DoloresConfig.AddRoute(
-            routeIdentifier: "OneLocation",
-            uriTemplate: "/locations/{id}",
-            get: new GetMethodSettings { Type = "TravelApi.Handlers.LocationHandler, TravelApi", MethodName = "GetOne" },
-            post: null,
-            put: null,
-            delete: null,
-            patch: null,
-            head: null,
-            options: null);
+         DoloresConfig.Route(routeIdentifier: "Person", uriTemplate: "/people/{id}")
+            .Get(type: "TravelApi.Handlers.PeopleHandler, TravelApi", classMethod: "GetOne");
 
-         DoloresConfig.AddRoute(
-            routeIdentifier: "Relation",
-            uriTemplate: "/rels/{id}",
-            get: new GetMethodSettings { Type = "TravelApi.Handlers.RelationHandler, TravelApi", MethodName = "Get" },
-            post: null,
-            put: null,
-            delete: null,
-            patch: null,
-            head: null,
-            options: null);
+         DoloresConfig.Route(routeIdentifier: "Locations", uriTemplate: "/locations")
+            .Get(type: "TravelApi.Handlers.LocationHandler, TravelApi", classMethod: "GetAll");
+
+         DoloresConfig.Route(routeIdentifier: "Location", uriTemplate: "/locations/{id}")
+            .Get(type: "TravelApi.Handlers.LocationHandler, TravelApi", classMethod: "GetOne");
+
+         DoloresConfig.Route(routeIdentifier: "Relation", uriTemplate: "/rels/{id}")
+            .Get(type: "TravelApi.Handlers.RelationHandler, TravelApi", classMethod: "Get");
       }
    }
 }

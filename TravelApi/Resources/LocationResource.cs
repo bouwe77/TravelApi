@@ -1,14 +1,16 @@
-﻿using Bouwe.Hal;
+﻿using Hal;
 using TravelApi.Hypermedia;
 
 namespace TravelApi.Resources
 {
-   public class LocationResource : HalResource
+   public class LocationResource : HalDocument
    {
       public LocationResource(string locationId)
          : base(new Links(UriFactory.GetLocationUri(locationId)))
       {
       }
+
+      public string Id { get; set; }
 
       public string Name { get; set; }
 

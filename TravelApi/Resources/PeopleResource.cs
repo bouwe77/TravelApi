@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Bouwe.Hal;
+using Hal;
 using Newtonsoft.Json;
 using TravelApi.Hypermedia;
 
 namespace TravelApi.Resources
 {
-   public class PeopleResource : HalResource
+   public class PeopleResource : HalDocument
    {
       public PeopleResource(IEnumerable<PersonResource> people)
          : base(new PeopleLinks())

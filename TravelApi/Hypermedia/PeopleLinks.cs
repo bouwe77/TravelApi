@@ -1,4 +1,4 @@
-﻿using Bouwe.Hal;
+﻿using Hal;
 using Newtonsoft.Json;
 
 namespace TravelApi.Hypermedia
