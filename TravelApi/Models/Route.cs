@@ -16,5 +16,8 @@ namespace TravelApi.Models
       public Location ToLocation { get; set; }
       
       public string Transportation { get; set; }
+
+      //TODO Distance in KM
+      //TODO Direction (north, north east, north west, etc.)
    }
 }

@@ -17,8 +17,6 @@ namespace TravelApi.Models
 
       protected bool Equals(Entity other)
       {
-         //TODO Ik heb hier een case insensitive compare van gemaakt. Even checken of dit inderdaad moet.
-         //TODO Ook doorvoeren in FMG2?
          return string.Equals(Id, other.Id, StringComparison.OrdinalIgnoreCase);
       }
 

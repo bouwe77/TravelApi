@@ -58,20 +58,22 @@ namespace TravelApi.Handlers
       {
          var personData = Request.MessageBody.DeserializeJson<CreatePersonData>();
 
-         bool valid = !string.IsNullOrWhiteSpace(personData.Name) && !string.IsNullOrWhiteSpace(personData.LocationId);
+         bool valid = !string.IsNullOrWhiteSpace(personData.Name) && !string.IsNullOrWhiteSpace(personData.Location);
          if (!valid)
          {
             throw new HttpBadRequestException("Both Name and Location are required");
          }
 
          // Check location exists.
+         string locationId;
          using (var locationRepository = new SqliteRepository<Location>())
          {
-            //TODO LocationId kan/mag een URI zijn, dus plitten op / en laatste segment pakken als LocationId
-            var location = locationRepository.GetById(personData.LocationId);
+            var locationUriSegments = personData.Location.Split('/');
+            locationId = locationUriSegments.Last();
+            var location = locationRepository.GetById(locationId);
             if (location == null)
             {
-               throw new HttpBadRequestException($"LocationId '{personData.LocationId}' does not exist");
+               throw new HttpBadRequestException($"LocationId '{locationId}' does not exist");
             }
          }
 
@@ -79,7 +81,7 @@ namespace TravelApi.Handlers
          string personId;
          using (var repository = new SqliteRepository<Person>())
          {
-            var person = new Person { Name = personData.Name, LocationId = personData.LocationId };
+            var person = new Person { Name = personData.Name, LocationId = locationId };
             personId = person.Id;
             repository.Insert(person);
          }
