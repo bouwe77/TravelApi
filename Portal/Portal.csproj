@@ -71,6 +71,7 @@
     <Content Include="index.html" />
     <Content Include="js\app.js" />
     <Content Include="js\exceptions.js" />
+    <Content Include="js\http.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

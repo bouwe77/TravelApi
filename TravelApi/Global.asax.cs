@@ -1,5 +1,7 @@
 ﻿using System;
 using Dolores.Configuration;
+using Dolores.Http;
+using Dolores.Responses;
 using TravelApi.Handlers;
 
 namespace TravelApi
@@ -8,7 +10,7 @@ namespace TravelApi
    {
       protected void Application_Start(object sender, EventArgs e)
       {
-         DoloresConfig.ShowErrorDetails = true;
+         DoloresConfig.ErrorDetailsInResponses = ErrorResponseDetails.All;
 
          DoloresConfig.JsonSerializerSettings = LowercaseContractResolver.GetSettings();
 
@@ -30,6 +32,11 @@ namespace TravelApi
 
          DoloresConfig.Route(routeIdentifier: "Relation", uriTemplate: "/rels/{id}")
             .Get(type: "TravelApi.Handlers.RelationHandler, TravelApi", classMethod: "Get");
+
+         DoloresConfig.OnSendResponse(response =>
+         {
+            response.SetHeader(HttpResponseHeaderFields.AccessControlAllowOrigin, "*");
+         });
       }
    }
 }
