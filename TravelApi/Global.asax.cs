@@ -33,7 +33,7 @@ namespace TravelApi
          DoloresConfig.Route(routeIdentifier: "Relation", uriTemplate: "/rels/{id}")
             .Get(type: "TravelApi.Handlers.RelationHandler, TravelApi", classMethod: "Get");
 
-         DoloresConfig.OnSendResponse(response =>
+         DoloresConfig.OnSendResponse((request, response) =>
          {
             response.SetHeader(HttpResponseHeaderFields.AccessControlAllowOrigin, "*");
          });
